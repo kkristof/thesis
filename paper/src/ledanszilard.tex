@@ -1,24 +1,24 @@
-ï»¿% LaTeX mintafÃ¡jl szakdolgozat Ã©s diplomamunkÃ¡knak az
-% SZTE Informatikai Tanszekcsoportja Ã¡ltal megkÃ¶vetelt
-% formai kÃ¶vetelmÃ©nyeinek megvalÃ³sÃ­tÃ¡sÃ¡hoz
+% LaTeX mintafájl szakdolgozat és diplomamunkáknak az
+% SZTE Informatikai Tanszekcsoportja által megkövetelt
+% formai követelményeinek megvalósításához
 % Modositva: 2011.04.28 Nemeth L. Zoltan
-% A fÃ¡jl hasznÃ¡latÃ¡hoz szÃ¼ksÃ©ges a magyar.ldf 2005/05/12 v1.5-Ã¶s vagy kÃ©sÃµbbi verziÃ³ja
-% ez letÃ¶lthetÃµ a http://www.math.bme.hu/latex/ weblaprÃ³l, a magyar nyelvÃ» szedÃ©shez
-% Hasznos informÃ¡ciÃ³k, linekek, LaTeX leirasok a www.latex.lap.hu weboldalon vannak.
+% A fájl használatához szükséges a magyar.ldf 2005/05/12 v1.5-ös vagy késõbbi verziója
+% ez letölthetõ a http://www.math.bme.hu/latex/ weblapról, a magyar nyelvû szedéshez
+% Hasznos információk, linekek, LaTeX leirasok a www.latex.lap.hu weboldalon vannak.
 %
 
 
 \documentclass[12pt]{report}
 
-%Magyar nyelvi tÃ¡mogatÃ¡s (Babel 3.7 vagy kÃ©sÃµbbi kell!)
+%Magyar nyelvi támogatás (Babel 3.7 vagy késõbbi kell!)
 \def\magyarOptions{defaults=hu-min}
 \usepackage[magyar]{babel}
 
-%Az Ã©kezetes betÃ»k hasznÃ¡latÃ¡hoz:
-\usepackage{t1enc}% Ã©kezetes szavak automatikus elvÃ¡lasztÃ¡sÃ¡hoz
-\usepackage[latin2]{inputenc}% Ã©kezetes szavak bevitelÃ©hez
+%Az ékezetes betûk használatához:
+\usepackage{t1enc}% ékezetes szavak automatikus elválasztásához
+\usepackage[latin2]{inputenc}% ékezetes szavak beviteléhez
 
-% A formai kovetelmenyekben megkÃ¶vetelt Times betÃ»tÃ­pus hasznalata:
+% A formai kovetelmenyekben megkövetelt Times betûtípus hasznalata:
 \usepackage{times}
 
 %Az AMS csomagjai
@@ -26,29 +26,29 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-%A fejlÃ©c lÃ¡blÃ©cek kialakÃ­tÃ¡sÃ¡hoz:
+%A fejléc láblécek kialakításához:
 \usepackage{fancyhdr}
 
-%TermÃ©szetesen tovÃ¡bbi csomagok is hasznÃ¡lhatÃ³k,
-%pÃ©ldÃ¡ul Ã¡brÃ¡k beillesztÃ©sÃ©hez a graphix Ã©s a psfrag,
-%ha nincs rÃ¡juk szÃ¼ksÃ©g termÃ©szetesen kihagyhatÃ³k.
+%Természetesen további csomagok is használhatók,
+%például ábrák beillesztéséhez a graphix és a psfrag,
+%ha nincs rájuk szükség természetesen kihagyhatók.
 \usepackage{graphicx}
 \usepackage{psfrag}
 
-%TÃ©telszerÃ» kÃ¶rnyezetek definiÃ¡lhatÃ³k, ezek most fejezetenkent egyutt szamozodnak, pl.
-\newtheorem{tÃ©t}{TÃ©tel}[chapter]
-\newtheorem{defi}[tÃ©t]{DefinÃ­ciÃ³}
-\newtheorem{lemma}[tÃ©t]{Lemma}
-\newtheorem{Ã¡ll}[tÃ©t]{ÃllÃ­tÃ¡s}
-\newtheorem{kÃ¶v}[tÃ©t]{KÃ¶vetkezmÃ©ny}
+%Tételszerû környezetek definiálhatók, ezek most fejezetenkent egyutt szamozodnak, pl.
+\newtheorem{tét}{Tétel}[chapter]
+\newtheorem{defi}[tét]{Definíció}
+\newtheorem{lemma}[tét]{Lemma}
+\newtheorem{áll}[tét]{Állítás}
+\newtheorem{köv}[tét]{Következmény}
 
-%Ha a megjegyzÃ©sek Ã©s a pÃ©ldak szÃ¶vegÃ©t nem akarjuk dÃµlten szedni, akkor
-%az alÃ¡bbi parancs utÃ¡n kell Ãµket definiÃ¡lnÃ­:
+%Ha a megjegyzések és a példak szövegét nem akarjuk dõlten szedni, akkor
+%az alábbi parancs után kell õket definiální:
 \theoremstyle{definition}
-\newtheorem{megj}[tÃ©t]{MegjegyzÃ©s}
-\newtheorem{pld}[tÃ©t]{PÃ©lda}
+\newtheorem{megj}[tét]{Megjegyzés}
+\newtheorem{pld}[tét]{Példa}
 
-%MargÃ³k:
+%Margók:
 \hoffset -1in
 \voffset -1in
 \oddsidemargin 35mm
@@ -63,39 +63,39 @@
 
 \begin{document}
 
-%A FEJEZETEK KEZDÃ•OLDALAINAK FEJ ES LÃBLÃ‰CE:
-%a plain oldalstÃ­lust kell Ã¡tdefiniÃ¡lni, hogy ott ne legyen fejlÃ©c:
+%A FEJEZETEK KEZDÕOLDALAINAK FEJ ES LÁBLÉCE:
+%a plain oldalstílust kell átdefiniálni, hogy ott ne legyen fejléc:
 \fancypagestyle{plain}{%
-%ez mindent tÃ¶rÃ¶l:
+%ez mindent töröl:
 \fancyhf{}
-% a lÃ¡blÃ©cbe jobboldalra kerÃ¼ljÃ¶n az oldalszÃ¡m:
+% a láblécbe jobboldalra kerüljön az oldalszám:
 \fancyfoot[R]{\thepage}
-%elvÃ¡lasztÃ³ vonal sem kell:
+%elválasztó vonal sem kell:
 \renewcommand{\headrulewidth}{0pt}
 }
 
-%A TÃ–BBI OLDAL FEJ Ã‰S LÃBLÃ‰CE:
+%A TÖBBI OLDAL FEJ ÉS LÁBLÉCE:
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{A diplomamunka cÃ­me}
+\fancyhead[L]{A diplomamunka címe}
 \fancyfoot[R]{\thepage}
 
 
-%A cÃ­moldalra se fej- se lÃ¡blÃ©c nem kell:
+%A címoldalra se fej- se lábléc nem kell:
 \thispagestyle{empty}
 
 \begin{center}
 \vspace*{1cm}
-{\Large\bf Szegedi TudomÃ¡nyegyetem}
+{\Large\bf Szegedi Tudományegyetem}
 
 \vspace{0.5cm}
 
-{\Large\bf Informatikai TanszÃ©kcsoport}
+{\Large\bf Informatikai Tanszékcsoport}
 
 \vspace*{3.8cm}
 
 
-{\LARGE\bf A diplomamunka cÃ­me}
+{\LARGE\bf A diplomamunka címe}
 
 
 \vspace*{3.6cm}
@@ -105,13 +105,13 @@
 
 \vspace*{4cm}
 
-%Ã‰rtelemszerÃ»en megvÃ¡ltoztatandÃ³:
+%Értelemszerûen megváltoztatandó:
 {\large
 \begin{tabular}{c@{\hspace{4cm}}c}
-\emph{KÃ©szÃ­tette:}     &\emph{TÃ©mavezetÃµ:}\\
-\bf{HallgatÃ³ Claudia}  &\bf{OktatÃ³ BonifÃ¡c}\\
+\emph{Készítette:}     &\emph{Témavezetõ:}\\
+\bf{Hallgató Claudia}  &\bf{Oktató Bonifác}\\
 informatika szakos     &egyetemi docens\\
-hallgatÃ³&
+hallgató&
 \end{tabular}
 }
 
@@ -126,180 +126,180 @@ Szeged
 \end{center}
 
 
-%A tartalomjegyzÃ©k:
+%A tartalomjegyzék:
 \tableofcontents
 
-%A \chapter* parancs nem ad a fejezetnek sorszÃ¡mot
-\chapter*{FeladatkiÃ­rÃ¡s}
-%A tartalomjegyzÃ©kben mÃ©gis szerepeltetni kell, mint szakasz(section) szerepeljen:
-\addcontentsline{toc}{section}{FeladatkiÃ­rÃ¡s}
+%A \chapter* parancs nem ad a fejezetnek sorszámot
+\chapter*{Feladatkiírás}
+%A tartalomjegyzékben mégis szerepeltetni kell, mint szakasz(section) szerepeljen:
+\addcontentsline{toc}{section}{Feladatkiírás}
 
-A tÃ©mavezetÃµ Ã¡ltal megfogalmazott feladatkiÃ­rÃ¡s. Ã–nÃ¡llÃ³ oldalon szerepel.
+A témavezetõ által megfogalmazott feladatkiírás. Önálló oldalon szerepel.
 
-\chapter*{Tartalmi Ã¶sszefoglalÃ³}
-\addcontentsline{toc}{section}{Tartalmi Ã¶sszefoglalÃ³}
+\chapter*{Tartalmi összefoglaló}
+\addcontentsline{toc}{section}{Tartalmi összefoglaló}
 
-A tartalmi Ã¶sszefoglalÃ³nak tartalmaznia kell (rÃ¶vid, legfeljebb egy oldalas, Ã¶sszefÃ¼ggÃµ megfogalmazÃ¡sban)
-a kÃ¶vetkezÃµket: a tÃ©ma megnevezÃ©se, a megadott feladat megfogalmazÃ¡sa - a feladatkiÃ­rÃ¡shoz viszonyÃ­tva-,
-a megoldÃ¡si mÃ³d, az alkalmazott eszkÃ¶zÃ¶k, mÃ³dszerek, az elÃ©rt eredmÃ©nyek, kulcsszavak (4-6 darab).
+A tartalmi összefoglalónak tartalmaznia kell (rövid, legfeljebb egy oldalas, összefüggõ megfogalmazásban)
+a következõket: a téma megnevezése, a megadott feladat megfogalmazása - a feladatkiíráshoz viszonyítva-,
+a megoldási mód, az alkalmazott eszközök, módszerek, az elért eredmények, kulcsszavak (4-6 darab).
 
-Az Ã¶sszefoglalÃ³ nyelvÃ©nek meg kell egyeznie a dolgozat nyelvÃ©vel. Ha a dolgozat idegen nyelven kÃ©szÃ¼l,
-magyar nyelvÃ» tartalmi Ã¶sszefoglalÃ³ kÃ©szÃ­tÃ©se is kÃ¶telezÃµ (kÃ¼lÃ¶n lapon), melynek terjedelmÃ©t a TVSZ szabÃ¡lyozza.
-
-
-\chapter*{BevezetÃ©s}
-\addcontentsline{toc}{section}{BevezetÃ©s}
-
-Itt kezdÃµdik a bevezetÃ©s, mely nem kap sorszÃ¡mot.
+Az összefoglaló nyelvének meg kell egyeznie a dolgozat nyelvével. Ha a dolgozat idegen nyelven készül,
+magyar nyelvû tartalmi összefoglaló készítése is kötelezõ (külön lapon), melynek terjedelmét a TVSZ szabályozza.
 
 
+\chapter*{Bevezetés}
+\addcontentsline{toc}{section}{Bevezetés}
 
-\chapter{Egy talÃ¡lÃ³ cÃ­m}
+Itt kezdõdik a bevezetés, mely nem kap sorszámot.
 
-Ez pedig mÃ¡r az elsÃµ fejezet, ...
 
-\section{AlcÃ­m}
+
+\chapter{Egy találó cím}
+
+Ez pedig már az elsõ fejezet, ...
+
+\section{Alcím}
 Ebben alfejezetek is lehetnek
 
-\subsection{Al-al cÃ­m}
-SÃµt al-al fejezetek is.
+\subsection{Al-al cím}
+Sõt al-al fejezetek is.
 
-\subsection{MÃ¡sik}
-Na lÃ¡ssunk egy mÃ¡sodikat is.
+\subsection{Másik}
+Na lássunk egy másodikat is.
 
 \subsection{Harmadik}
 Meg egy harmadikat is.
 
-\section{MindjÃ¡rt vÃ©ge a fejezetnek}
-TÃ©nyleg, itt valÃ³ban vÃ©ge.
+\section{Mindjárt vége a fejezetnek}
+Tényleg, itt valóban vége.
 
 
-\chapter{HosszÃº}
-\section{RÃ©szletek}
-Ebbe a fejezetbe pedig Ã­runk sok sok szÃ¶veget. SzÃ¶veg, szÃ¶veg, szÃ¶veg,  szÃ¶veg, szÃ¶veg, szÃ¶veg,   szÃ¶veg, szÃ¶veg, szÃ¶veg
-szÃ¶veg, szÃ¶veg, szÃ¶veg,  szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg,  szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg,  szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg,  szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
-szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg, szÃ¶veg,
+\chapter{Hosszú}
+\section{Részletek}
+Ebbe a fejezetbe pedig írunk sok sok szöveget. Szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg,   szöveg, szöveg, szöveg
+szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
+szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
 
 \chapter{Egyebek}
 
-\section{KÃ¶rnyezetek}
-\begin{tÃ©t}
-\label{tÃ©t-alap}
-Ez itt egy tÃ©tel.
-\end{tÃ©t}
+\section{Környezetek}
+\begin{tét}
+\label{tét-alap}
+Ez itt egy tétel.
+\end{tét}
 
-%A bizonyÃ­tÃ¡s \begin{proof} Ã©s \end{proof} kÃ¶zÃ© kerÃ¼l:
+%A bizonyítás \begin{proof} és \end{proof} közé kerül:
 \begin{proof}
-Ez pedig a bizonyÃ­tÃ¡sa, melyben szerepel egy kÃ©plet:
+Ez pedig a bizonyítása, melyben szerepel egy képlet:
 \begin{equation}
 \begin{split}
-E^{\text{globÃ¡lis}} &= \text{tÃ©t}_1\cdot E_1^{\text{elemi}}+\text{tÃ©t}_2\cdot
-E_2^{\text{elemi}}+\ldots+\text{tÃ©t}_n\cdot E_n^{elemi} \\
-&=E^{\text{elemi}}\left(\text{tÃ©t}_1+\text{tÃ©t}_2+\ldots+\text{tÃ©t}_n\right)\\
-&=E^{\text{elemi}}\cdot\text{Ã¶ssztÃ©t}
+E^{\text{globális}} &= \text{tét}_1\cdot E_1^{\text{elemi}}+\text{tét}_2\cdot
+E_2^{\text{elemi}}+\ldots+\text{tét}_n\cdot E_n^{elemi} \\
+&=E^{\text{elemi}}\left(\text{tét}_1+\text{tét}_2+\ldots+\text{tét}_n\right)\\
+&=E^{\text{elemi}}\cdot\text{össztét}
 \end{split}
 \end{equation}
-A mÃ¡sodik egyenlÃµsÃ©gnÃ©l azt hasznÃ¡ltunk ki, hogy ...
+A második egyenlõségnél azt használtunk ki, hogy ...
 
-Ezzel a bizonyÃ­tÃ¡st befejeztÃ¼k.
+Ezzel a bizonyítást befejeztük.
 \end{proof}
 
 \begin{defi}
 \label{def-pelda}
-Ez egy definÃ­ciÃ³. SzÃ¡mozÃ¡sa a tÃ©telekkel egyÃ¼tt tÃ¶rtÃ©nik.
+Ez egy definíció. Számozása a tételekkel együtt történik.
 \end{defi}
 
-\begin{Ã¡ll}
-A kÃ¶vetekezÃµ nÃ©gy Ã¡llÃ­tÃ¡s egymÃ¡ssal ekvivalens:
-\label{Ã¡ll-ekvivalencia}
+\begin{áll}
+A követekezõ négy állítás egymással ekvivalens:
+\label{áll-ekvivalencia}
   \begin{itemize}
-  \item[(i)] $M$ Ã©s $N$ gyengÃ©n ekvivalensek.
+  \item[(i)] $M$ és $N$ gyengén ekvivalensek.
   \item[(ii)] Minden $n$
-  nemnegatÃ­v egÃ©sz szÃ¡mra $|L_{M}\cap \Sigma_{1}^{n}|=|L_{N}\cap \Sigma_{2}^{n}|$ teljesÃ¼l.
-  \item[(iii)] Minden $n$ nemnegatÃ­v egÃ©sz szÃ¡m esetÃ©n
-   lÃ©tezik
-  $ \pi_{n}: L_{M}\cap \Sigma_{1}^{n} \rightarrow L_{N}\cap \Sigma_{2}^{n} $ kÃ¶lcsÃ¶nÃ¶sen egyÃ©rtelmÃ»
-  lekÃ©pezÃ©s.
-  \item[(iv)] Minden nemnegatÃ­v $n$-re $x A^{n} y^{T}=x' A'^{n} y'^{T}$.
+  nemnegatív egész számra $|L_{M}\cap \Sigma_{1}^{n}|=|L_{N}\cap \Sigma_{2}^{n}|$ teljesül.
+  \item[(iii)] Minden $n$ nemnegatív egész szám esetén
+   létezik
+  $ \pi_{n}: L_{M}\cap \Sigma_{1}^{n} \rightarrow L_{N}\cap \Sigma_{2}^{n} $ kölcsönösen egyértelmû
+  leképezés.
+  \item[(iv)] Minden nemnegatív $n$-re $x A^{n} y^{T}=x' A'^{n} y'^{T}$.
   \end{itemize}
-\end{Ã¡ll}
+\end{áll}
 
-\begin{kÃ¶v}
-  Ez pedig egy kÃ¶vetkezmÃ©ny.
-\end{kÃ¶v}
+\begin{köv}
+  Ez pedig egy következmény.
+\end{köv}
 
 \begin{pld}
-  Ez lesz a pÃ©lda, ezt nem szedjÃ¼k dÃµlten.
+  Ez lesz a példa, ezt nem szedjük dõlten.
 \end{pld}
 
 \begin{megj}
-  A fejezetet pedig egy megjegyzÃ©s zÃ¡rja.
+  A fejezetet pedig egy megjegyzés zárja.
 \end{megj}
 
 
-\section{ListÃ¡k}
+\section{Listák}
 
-Ez egy felsorolÃ¡s:
+Ez egy felsorolás:
 \begin{itemize}
-    \item elsÃµ
-    \item mÃ¡sodik
-      \subitem elsÃµ
-      \subitem mÃ¡sodik
+    \item elsõ
+    \item második
+      \subitem elsõ
+      \subitem második
     \item harmadik
-    \item[$\clubsuit$]  sajÃ¡t jel is alkalmazhatÃ³
+    \item[$\clubsuit$]  saját jel is alkalmazható
 \end{itemize}
-Ez pedig egy szÃ¡mozott lista:
+Ez pedig egy számozott lista:
 \begin{enumerate}
-            \item hÃ©tfÃµ
+            \item hétfõ
             \item kedd
             \item szerda
 \end{enumerate}
 
-%OldaltÃ¶rÃ©st is alkalmazhatunk
+%Oldaltörést is alkalmazhatunk
 \pagebreak
 
 
-\section{Egy tÃ¡blÃ¡zat Ã©s egy Ã¡bra}
+\section{Egy táblázat és egy ábra}
 
-A tÃ¡blÃ¡zat itt kÃ¶vetkezik.
+A táblázat itt következik.
 \begin{table}[!h]\label{strategia}
-\caption{PÃ©lda stratÃ©giatÃ¡blÃ¡ra a Black Jack esetÃ©ben}
+\caption{Példa stratégiatáblára a Black Jack esetében}
 \begin{center}
 \begin{tabular}{l||r|r|r|r|r|r|r|r|r|r}
-&Ã¡sz&2&3&4&5&6&7&8&9&10\\
+&ász&2&3&4&5&6&7&8&9&10\\
 \hline\hline
 21&n&n&n&n&n&n&n&n&n&n\\
 20&n&n&n&n&n&n&n&n&n&n\\
@@ -316,7 +316,7 @@ A tÃ¡blÃ¡zat itt kÃ¶vetkezik.
 \end{center}
 \end{table}
 
-LÃ¡ssunk egy Ã¡brÃ¡t is!
+Lássunk egy ábrát is!
 \begin{figure}[!h]
 \unitlength 8mm
 \begin{center}
@@ -339,16 +339,16 @@ LÃ¡ssunk egy Ã¡brÃ¡t is!
 \put(7,2){\makebox(1,1){\(\$\)}}
 \end{picture}
 \end{center}
-\caption{\label{labirintus}Labirintus bejÃ¡rÃ¡sa}
+\caption{\label{labirintus}Labirintus bejárása}
 \end{figure}
 
-%laptÃ¶rÃ©s:
+%laptörés:
 \newpage
 
-KÃ¼lÃ¶n fÃ¡jlban elkÃ©szÃ­tett grafika beillesztÃ©sÃ©t a \ref{abra-automata} Ã¡bra szemlÃ©lteti.
+Külön fájlban elkészített grafika beillesztését a \ref{abra-automata} ábra szemlélteti.
 \begin{figure}[h]
 \centering
-%A psfrag csomag hasznÃ¡latÃ¡val a (encapsulated)postcript abra feliratait LaTeX koddal helyettesÃ­thatjÃ¼k:
+%A psfrag csomag használatával a (encapsulated)postcript abra feliratait LaTeX koddal helyettesíthatjük:
 \psfrag{a}[c][c]{$q_0$}
 \psfrag{b}[c][c]{$q_1$}
 \psfrag{c}[c][c]{$q_2$}
@@ -364,15 +364,37 @@ KÃ¼lÃ¶n fÃ¡jlban elkÃ©szÃ­tett grafika beillesztÃ©sÃ©t a \ref{abra-automata} Ã¡b
 \psfrag{15}[c][c]{$a_{15}$}
 %Garfika belillesztese, "scale2 a nagyitas/kicinyites merteke, itt 80%.
 \includegraphics[scale=0.8]{abra.eps}
-\caption{\label{abra-automata} A $4\times m$-es tÃ¡bla lefedÃ©seinek mÃ¡trixreprezentÃ¡ciÃ³it felismerÃµ automata}
+\caption{\label{abra-automata} A $4\times m$-es tábla lefedéseinek mátrixreprezentációit felismerõ automata}
 \end{figure}
 
 
-\chapter{FÃ¼ggelÃ©k}
+\begin{figure}[h]
+\centering
+%%A psfrag csomag használatával a (encapsulated)postcript abra feliratait LaTeX koddal helyettesíthatjük:
+\psfrag{t}[c][c]{$q_0$}
+%\psfrag{b}[c][c]{$q_1$}
+%\psfrag{c}[c][c]{$q_2$}
+%\psfrag{d}[c][c]{$q_3$}
+%\psfrag{e}[c][c]{$q_4$}
+%\psfrag{f}[c][c]{$q_5$}
+%\psfrag{g}[c][c]{$q_6$}
+%\psfrag{h}[c][c]{$q_7$}
+%\psfrag{0}[c][c]{$a_{0}$}
+%\psfrag{9}[c][c]{$a_{9}$}
+%\psfrag{3}[c][c]{$a_{3}$}
+%\psfrag{12}[c][c]{$a_{12}$}
+%\psfrag{15}[c][c]{$a_{15}$}
+%%Garfika belillesztese, "scale2 a nagyitas/kicinyites merteke, itt 80%.
+\includegraphics[scale=0.3]{bezier.eps}
+\caption{\label{abra-automata} A $4\times m$-es tábla lefedéseinek mátrixreprezentációit felismerõ automata}
+\end{figure}
 
-\section{A program forrÃ¡skÃ³dja}
-A fÃ¼ggelÃ©kbe kerÃ¼lhetnek a hosszÃº tÃ¡blÃ¡zatok, vagy mondjuk egy programlista:
-% A verbatim kornyezet hasznalatanal Ã¼gyeljÃ¼nk rÃ¡, hogy az editor a szÃ³kÃ¶zÃ¶jket Ã¡t ne Ã­rja tab karakterekre!
+
+\chapter{Függelék}
+
+\section{A program forráskódja}
+A függelékbe kerülhetnek a hosszú táblázatok, vagy mondjuk egy programlista:
+% A verbatim kornyezet hasznalatanal ügyeljünk rá, hogy az editor a szóközöjket át ne írja tab karakterekre!
 \begin{verbatim}
    while (ujkmodosito[i]<0)
    {
@@ -392,91 +414,91 @@ A fÃ¼ggelÃ©kbe kerÃ¼lhetnek a hosszÃº tÃ¡blÃ¡zatok, vagy mondjuk egy programlist
 
 
 \chapter*{Nyilatkozat}
-%Egy Ã¼res sort adunk a tartalomjegyzÃ©khez:
+%Egy üres sort adunk a tartalomjegyzékhez:
 \addtocontents{toc}{\ }
 \addcontentsline{toc}{section}{Nyilatkozat}
 %\hspace{\parindent}
 
-% A nyilatkozat szÃ¶vege mÃ¡s titkos Ã©s nem titkos dolgozatok esetÃ©ben.
-% Csak az egyik tipusÃº myilatokzatnak kell a dolgozatban szerepelni
-% A ponok helyÃ©re az adatok Ã©rtelemszerÃ»en behelyettesÃ­dendÃµk es
+% A nyilatkozat szövege más titkos és nem titkos dolgozatok esetében.
+% Csak az egyik tipusú myilatokzatnak kell a dolgozatban szerepelni
+% A ponok helyére az adatok értelemszerûen behelyettesídendõk es
 % a szakdolgozat /diplomamunka szo megfeleloen kivalasztando.
 
 
-%A nyilatkozat szÃ¶vege TITKOSNAK NEM MINÃ•SÃTETT dolgozatban a kÃ¶vetkezÃµ:
-%A pontokkal jelÃ¶lt szÃ¶vegrÃ©szek Ã©rtelemszerÃ»en a szÃ¶vegszerkesztÃµben Ã©s
-%nem kÃ©zzel helyettesÃ­tendÃµk:
+%A nyilatkozat szövege TITKOSNAK NEM MINÕSÍTETT dolgozatban a következõ:
+%A pontokkal jelölt szövegrészek értelemszerûen a szövegszerkesztõben és
+%nem kézzel helyettesítendõk:
 
 \noindent
-AlulÃ­rott \makebox[4cm]{\dotfill} szakos hallgatÃ³, kijelentem, hogy a dolgozatomat a Szegedi TudomÃ¡nyegyetem, Informatikai TanszÃ©kcsoport \makebox[4cm]{\dotfill} TanszÃ©kÃ©n kÃ©szÃ­tettem, \makebox[4cm]{\dotfill} diploma megszerzÃ©se Ã©rdekÃ©ben.
+Alulírott \makebox[4cm]{\dotfill} szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem, Informatikai Tanszékcsoport \makebox[4cm]{\dotfill} Tanszékén készítettem, \makebox[4cm]{\dotfill} diploma megszerzése érdekében.
 
-Kijelentem, hogy a dolgozatot mÃ¡s szakon korÃ¡bban nem vÃ©dtem meg, sajÃ¡t munkÃ¡m eredmÃ©nye, Ã©s csak a hivatkozott forrÃ¡sokat (szakirodalom, eszkÃ¶zÃ¶k, stb.) hasznÃ¡ltam fel.
+Kijelentem, hogy a dolgozatot más szakon korábban nem védtem meg, saját munkám eredménye, és csak a hivatkozott forrásokat (szakirodalom, eszközök, stb.) használtam fel.
 
-TudomÃ¡sul veszem, hogy szakdolgozatomat / diplomamunkÃ¡mat a Szegedi TudomÃ¡nyegyetem Informatikai TanszÃ©kcsoport kÃ¶nyvtÃ¡rÃ¡ban, a helyben olvashatÃ³ kÃ¶nyvek kÃ¶zÃ¶tt helyezik el.
+Tudomásul veszem, hogy szakdolgozatomat / diplomamunkámat a Szegedi Tudományegyetem Informatikai Tanszékcsoport könyvtárában, a helyben olvasható könyvek között helyezik el.
 
 \vspace*{2cm}
 
 \begin{tabular}{lc}
 Szeged, \today\
 \hspace{2cm} & \makebox[6cm]{\dotfill} \\
-& alÃ¡Ã­rÃ¡s \\
+& aláírás \\
 \end{tabular}
 
 
 \vspace*{4cm}
 
-%A nyilatkozat szÃ¶vege TITKOSNAK MINÃ•SÃTETT dolgozatban a kÃ¶vetkezÃµ:
+%A nyilatkozat szövege TITKOSNAK MINÕSÍTETT dolgozatban a következõ:
 
 \noindent
-AlulÃ­rott \makebox[4cm]{\dotfill} szakos hallgatÃ³, kijelentem, hogy a dolgozatomat a Szegedi TudomÃ¡nyegyetem, Informatikai TanszÃ©kcsoport \makebox[4cm]{\dotfill} TanszÃ©kÃ©n kÃ©szÃ­tettem, \makebox[4cm]{\dotfill} diploma megszerzÃ©se Ã©rdekÃ©ben.
+Alulírott \makebox[4cm]{\dotfill} szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem, Informatikai Tanszékcsoport \makebox[4cm]{\dotfill} Tanszékén készítettem, \makebox[4cm]{\dotfill} diploma megszerzése érdekében.
 
-Kijelentem, hogy a dolgozatot mÃ¡s szakon korÃ¡bban nem vÃ©dtem meg, sajÃ¡t munkÃ¡m eredmÃ©nye, Ã©s csak a hivatkozott forrÃ¡sokat (szakirodalom, eszkÃ¶zÃ¶k, stb.) hasznÃ¡ltam fel.
+Kijelentem, hogy a dolgozatot más szakon korábban nem védtem meg, saját munkám eredménye, és csak a hivatkozott forrásokat (szakirodalom, eszközök, stb.) használtam fel.
 
-TudomÃ¡sul veszem, hogy szakdolgozatomat / diplomamunkÃ¡mat a TVSZ 4. sz. mellÃ©kletÃ©ben leÃ­rtak szerint kezelik.
+Tudomásul veszem, hogy szakdolgozatomat / diplomamunkámat a TVSZ 4. sz. mellékletében leírtak szerint kezelik.
 
 \vspace*{2cm}
 
 \begin{tabular}{lc}
 Szeged, \today\
 \hspace{2cm} & \makebox[6cm]{\dotfill} \\
-& alÃ¡Ã­rÃ¡s \\
+& aláírás \\
 \end{tabular}
 
 
 
 
 
-\chapter*{KÃ¶szÃ¶netnyilvÃ¡nÃ­tÃ¡s}
-\addcontentsline{toc}{section}{KÃ¶szÃ¶netnyilvÃ¡nÃ­tÃ¡s}
+\chapter*{Köszönetnyilvánítás}
+\addcontentsline{toc}{section}{Köszönetnyilvánítás}
 
-EzÃºton szeretnÃ©k kÃ¶szÃ¶netet mondani \textbf{X. Y-nak} ezÃ©rt Ã©s ezÃ©rt \ldots
+Ezúton szeretnék köszönetet mondani \textbf{X. Y-nak} ezért és ezért \ldots
 
 
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
 %\bibliography{diploma}
 %\bibliographystyle{plain}
 
-%VAGY "kÃ©zzel" a kÃ¶vetkezÃµ mÃ³don:
+%VAGY "kézzel" a következõ módon:
 
 \begin{thebibliography}{9}
-%10-nÃ©l kevesebb hivatkozÃ¡s esetÃ©n
+%10-nél kevesebb hivatkozás esetén
 
 %\begin{thebibliography}{99}
-% 10-nÃ©l tÃ¶bb hivatkozÃ¡s esetÃ©n
+% 10-nél több hivatkozás esetén
 
-\addcontentsline{toc}{section}{IrodalomjegyzÃ©k}
+\addcontentsline{toc}{section}{Irodalomjegyzék}
 
-%Elso szerzok vezetekneve alapjan Ã¡bÃ©cÃ©rendben rendezve.
+%Elso szerzok vezetekneve alapjan ábécérendben rendezve.
 
 
-%folyÃ³irat cikk: szerzok(k), a folyÃ³irat neve kiemelve,
+%folyóirat cikk: szerzok(k), a folyóirat neve kiemelve,
 %az evfolyam felkoveren, zarojelben az evszam, vegul az oldalszamok es pont.
 \bibitem{Gischer}
 J. L. Gischer,
 The equational theory of pomsets.
 \emph{Theoret. Comput. Sci.}, \textbf{61}(1988), 199--224.
 
-%kÃ¶nyv (szerzo(k), a kÃ¶nyv neve kiemelve, utana a kiado, a kiado szekhelye, az evszam es pont.)
+%könyv (szerzo(k), a könyv neve kiemelve, utana a kiado, a kiado szekhelye, az evszam es pont.)
 \bibitem{Pin}
 J.-E. Pin,
 \emph{Varieties of Formal Languages},
