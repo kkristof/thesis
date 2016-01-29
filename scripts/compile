@@ -1,6 +1,7 @@
 #!/bin/bash
+
 rootDir=$PWD
-srcDir="$rootDir/src"
+srcDir="$rootDir/paper/src"
 outDir="$rootDir/build"
 
 mkdir -p $outDir
@@ -29,7 +30,7 @@ if [ "$?" != "0" ] ; then exit; fi
 
 echo [$((++processIndex))/$processNumber]
 cd $outDir
-ps2pdf $fileName.ps $rootDir/$fileName.pdf
+ps2pdf $fileName.ps $fileName.pdf
 if [ "$?" != "0" ] ; then exit; fi
 
 echo Done!
