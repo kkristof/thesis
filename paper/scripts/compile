@@ -1,7 +1,7 @@
 #!/bin/bash
 rootDir=$PWD
 srcDir="$rootDir/src"
-outDir="$rootDir/obj"
+outDir="$rootDir/build"
 
 mkdir -p $outDir
 
