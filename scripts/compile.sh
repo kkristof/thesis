@@ -12,8 +12,19 @@ if [ "${1}" != "" ] ; then
 fi
 
 processIndex=0
-processNumber=4
+processNumber=6
 echo $rootDir $srcDir $outDir $fileName
+
+echo [$((++processIndex))/$processNumber]
+cd $srcDir
+latex -output-directory=$outDir $fileName
+if [ "$?" != "0" ] ; then exit; fi
+
+echo [$((++processIndex))/$processNumber]
+cp $srcDir/cites.bib $outDir/
+cd $outDir
+bibtex $fileName
+if [ "$?" != "0" ] ; then exit; fi
 
 echo [$((++processIndex))/$processNumber]
 cd $srcDir

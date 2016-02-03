@@ -12,6 +12,7 @@
 %Magyar nyelvi támogatás (Babel 3.7 vagy későbbi kell!)
 \def\magyarOptions{defaults=hu-min}
 \usepackage[magyar]{babel}
+\usepackage{cite}
 
 %Az ékezetes betűk használatához:
 \usepackage{t1enc}% ékezetes szavak automatikus elválasztásához
@@ -89,7 +90,7 @@
     %A TÖBBI OLDAL FEJ ÉS LÁBLÉCE:
     \pagestyle{fancy}
     \fancyhf{}
-    \fancyhead[L]{A diplomamunka címe}
+    \fancyhead[L]{OpenGL-ES 2.0 alapú Path API}
     \fancyfoot[R]{\thepage}
 
 
@@ -106,8 +107,8 @@
 
     \vspace*{3.8cm}
 
-
-    {\LARGE\bf A diplomamunka címe}
+    % Tíz sorral fentebb is át kell írni!!!
+    {\LARGE\bf OpenGL-ES 2.0 alapú Path API}
 
 
     \vspace*{3.6cm}
@@ -181,7 +182,7 @@ magyar nyelvű tartalmi összefoglaló készítése is kötelező (külön lapon
     \subsubsection*{A téma megnevezése}
 
 A \textit{W3C} (World Wide Web Consortium) által \textit{Canvas 2D
-Context} néven 2015-ben elfogadott ajánlás\footnote{} Path részének
+Context}\cite{Cabanier:14:HCC} néven 2015-ben elfogadott ajánlás\footnote{} Path részének
 megvalósítása \textit{OpenGL-ES 2.0} alapokon.
 
     \subsubsection*{A megadott feladat megfogalmazása}
@@ -242,10 +243,8 @@ renderelő motoroknak.
 %%   Irodalomjegyzék                                                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \begin{thebibliography}{9}
-
-    \end{thebibliography}
-
+    \bibliography{cites}{}
+    \bibliographystyle{plain}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%   Nyilatkozat                                                    %%
