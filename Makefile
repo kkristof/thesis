@@ -28,8 +28,7 @@ gepard:
 	cd code/gepard.git && make debug
 
 gepard-clean:
-	cd code/gepard.git && make release.clean
-	cd code/gepard.git && make debug.clean
+	cd code/gepard.git && make distclean
 
 gepard-rm:
 	rm -rf code
