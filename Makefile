@@ -3,7 +3,7 @@
 all: thesis
 
 thesis:
-	./scripts/compile ledanszilard
+	./scripts/compile.sh ledanszilard
 
 hunspell:
 	hunspell -d hu_HU -i utf-8 -t -p paper/hunspell/words paper/src/ledanszilard.tex
@@ -22,12 +22,7 @@ distclean:
 ### gepard
 
 gepard-fetch-code:
-# TODO: Improve code fetching
-	mkdir -p code
-	cd code \
-	&& git clone git@github.com:szledan/gepard.git gepard.git \
-	&& cd gepard.git \
-	&& git checkout origin/path_rendering
+	./scripts/gepard-fetch.sh
 
 gepard:
 	cd code/gepard.git && make debug
