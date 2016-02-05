@@ -13,6 +13,9 @@ release: thesis gepard
 	cp build/ledanszilard.pdf release/
 	cp -R code/gepard.git release/
 
+install:
+	./scripts/update-deps.sh
+
 clean:
 	rm -rf build/*
 
