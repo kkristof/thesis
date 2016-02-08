@@ -22,6 +22,7 @@ if [ "$?" != "0" ] ; then exit; fi
 
 echo [$((++processIndex))/$processNumber]
 cp $srcDir/cites.bib $outDir/
+cp $srcDir/huplain.bst $outDir/
 cd $outDir
 bibtex $fileName
 if [ "$?" != "0" ] ; then exit; fi
