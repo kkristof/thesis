@@ -59,6 +59,13 @@
 \newtheorem{megj}[tét]{Megjegyzés}
 \newtheorem{pld}[tét]{Példa}
 
+%%% Saját parancsok
+% Az angol kifejezések kiemelése
+\newcommand{\angol}[1]{\textsl{#1}}
+\newcommand{\angolfn}[1]{\footnotesize{\angol{#1}}}
+
+%\hyphenation{sza-bály el-kü-lö-ní-tett}
+
 %Margók:
 \hoffset -1in
 \voffset -1in
@@ -172,24 +179,45 @@ A témavezető által megfogalmazott feladatkiírás. Önálló oldalon szerepel
     \chapter*{Tartalmi összefoglaló}
     \addcontentsline{toc}{section}{Tartalmi összefoglaló}
 
-A tartalmi összefoglalónak tartalmaznia kell (rövid, legfeljebb egy oldalas, összefüggő megfogalmazásban)
-a következőket: a téma megnevezése, a megadott feladat megfogalmazása - a feladatkiíráshoz viszonyítva-,
-a megoldási mód, az alkalmazott eszközök, módszerek, az elért eredmények, kulcsszavak (4-6 darab).
+%A tartalmi összefoglalónak tartalmaznia kell (rövid, legfeljebb egy oldalas, összefüggő megfogalmazásban)
+%a következőket: a téma megnevezése, a megadott feladat megfogalmazása - a feladatkiíráshoz viszonyítva-,
+%a megoldási mód, az alkalmazott eszközök, módszerek, az elért eredmények, kulcsszavak (4-6 darab).
 
-Az összefoglaló nyelvének meg kell egyeznie a dolgozat nyelvével. Ha a dolgozat idegen nyelven készül,
-magyar nyelvű tartalmi összefoglaló készítése is kötelező (külön lapon), melynek terjedelmét a TVSZ szabályozza.
+%Az összefoglaló nyelvének meg kell egyeznie a dolgozat nyelvével. Ha a dolgozat idegen nyelven készül,
+%magyar nyelvű tartalmi összefoglaló készítése is kötelező (külön lapon), melynek terjedelmét a TVSZ szabályozza.
 
     \subsubsection*{A téma megnevezése}
 
-A \textit{W3C} (World Wide Web Consortium) által \textit{Canvas 2D
-Context}\cite{Cabanier:14:HCC} néven 2015-ben elfogadott ajánlás\footnote{} Path részének
-megvalósítása \textit{OpenGL-ES 2.0} alapokon.
+  A \emph{W3C} (World Wide Web Consortium) által \emph{Canvas 2D
+Context} néven
+2015-ben elfogadott ajánlás \emph{path} részének megvalósítása
+\emph{OpenGL-ES 2.0} alapokon.
 
     \subsubsection*{A megadott feladat megfogalmazása}
 
+  Az előbb említett \emph{context} egy grafikus API~\footnote{Az
+alkalmazásprogramozási felület/interfész (Application Programming
+Interface) kifejezésre a továbbiakban mint \emph{API}
+hivatkozunk.}.
+  Ez az API több grafikus függvényt definiál (ld. később).
+  Jelen dolgozat témája ezek közül az úgynevezett \emph{path} részének
+le\-pro\-gra\-mo\-zá\-sa~úgy, hogy a lehető legtöbb feladatot a grafikus
+processzor (\textit{GPU}) lássa el.
+
     \subsubsection*{A megoldásmód}
 
+  Több megoldás közül (ld. a Bevezetés részt) mi az alakzatok trapézokra
+bontását választottuk. Hiszen minden trapéz felbontható további két
+háromszögre, mely megkötésre a GLES2 grafikus renderelő~\footnote{Az
+előállítás--megjelenítés (\emph{rendering}) kifejezésre a
+továbbiakban \emph{renderelés}ként hívatkozunk.} API miatt van
+szükség.
+
     \subsubsection*{Alkalmazott eszközök, módszerek}
+
+  Az API \emph{c++11} programozási nyelven készült, használva a
+következő eszközöket, technológiákat: \emph{gcc}, \emph{git},
+\textit{OpenGL ES 2.0}, \emph{\LaTeX},
 
     \subsubsection*{Elért eredmények}
 
@@ -202,21 +230,51 @@ grafika, path, canvas-2D-context, OpenGL-ES 2.0
 %%   Bevezetés                                                      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \chapter*{Bevezetés}
+    \chapter*{Bevezetés}    \label{Bevezetés}
     \addcontentsline{toc}{section}{Bevezetés}
 
-Egyre nagyobb a jelentősége az erős, gyors és energiahatékony grafikus
-renderelő motoroknak.
+  A környezetünkben található számítástechnikai eszközök
+legtöbbjének van grafikus kijelzője, és ezen eszközök mindegyike
+használ valamilyen megjelenítő~\footnote{A számítógépes grafikában egy
+modell megjelenítését végző folyamatot \emph{renderelés}nek
+(\angolfn{rendering}), a renderelést végző programrészt pedig
+\emph{motor}nak (\angolfn{engine}) hívnak} (a továbbiakban renderelő)
+függvénykönyvtárat. Ilyen például a Skia, a Cairo, az OpenGL, és ilyen
+tervezését tűzte ki célul a Gepard Graphics csapata is. A \emph{Gepard}
+a tervek szerint egy \emph{C++11}-es nyelven írt, és több (OpenGL,
+\mbox{OpenGL-ES 2.0\cite{Munshi:2008:OEP:1481069}} és Vulkan) grafikus
+renderelő motort támogató függvénykönyvtár lesz.
 
-A legtöbb path renderelő motor a jól ismert\cite{Hughes:2013:CGP}
-scanline algoritmusokat használja.
+  A tervek szerint idővel a Gepard több interfésszel is rendelkezik.
+Így alkot majd egy komplex grafikus alkalmazásprogramozási felületet
+(\angol{Application Programming Interface}) (a továbbiakban API). Az
+elsőnek választott ilyen ismertebb interfész amit támogatni kíván az a
+\emph{W3C} által készített \emph{Canvas 2D
+Context}~\cite{Cabanier:14:HCC} nevű ajánlása.
+
+  A \emph{Canvas 2D Context} (a továbbiakban \emph{Canvas}) ajánlás
+2015-ös kiadása több elkülönített részből állítja össze az API-t. Ezen
+részek egyike az úgynevezett \emph{path}. Az említett 2015-ös ajánlás
+az 5., 8. és 11. fejezetekben részletezi a path-szal szembeni
+elvárásokat. A path maga az definiált grafikus alakzatokhoz képest
+bonyolultabbak leírását biztosító eszköz. A Háttér (\ref{Háttér}.)
+fejezetben részletesebben kifejtjük a path-t építő eszköz lehetőségeit
+és szabályait. Itt most csak annyiban kell kitérjünk rá, hogy
+alapvetően két nagyobb részből áll ez is. A \emph{körvonalból}
+(\angol{stroke}) és a \emph{kitöltésből} (\angol{fill}).
+
+  Jelen dolgozat a kitöltést megvalósító részt kívánja bemutatni.
+Azt, hogy milyen szabályoknak kellett megfelelni, milyen lehetőségeket
+biztosított a választott OpenGL-ES 2.0 (a továbbiakban GLES2) szabvány,
+és azt, hogy hogyan alkot köztes réteget ezek között a Gepard path
+kitöltését biztosító része.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%   Háttér                                                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \chapter{Háttér}
+    \chapter{Háttér}   \label{Háttér}
     \addcontentsline{toc}{section}{Háttér}
 
 
