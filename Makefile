@@ -8,7 +8,7 @@ thesis:
 hunspell:
 	hunspell -d hu_HU -i utf-8 -t -p paper/hunspell/words paper/src/ledanszilard.tex
 
-release: thesis gepard
+release: gepard thesis
 	mkdir -p release
 	cp build/ledanszilard.pdf release/
 	cp -R code/gepard.git release/
@@ -29,7 +29,7 @@ gepard-fetch-code:
 	./scripts/gepard-fetch.sh
 
 gepard: gepard-fetch-code
-	cd code/gepard.git && make debug
+	cd code/gepard.git && make
 
 gepard-clean:
 	cd code/gepard.git && make distclean
