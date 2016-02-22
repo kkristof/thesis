@@ -16,6 +16,9 @@ release: gepard thesis
 install:
 	./scripts/update-deps.sh
 
+install-dev:
+	./scripts/update-deps.sh --dev
+
 clean:
 	rm -rf build/*
 
