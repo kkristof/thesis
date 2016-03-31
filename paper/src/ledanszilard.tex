@@ -297,10 +297,21 @@ Ezekről a lépésekről is érdemes beszélni.
 
     \section[A Canvas ajánlás]{A W3C Canvas 2D Context ajánlása}
     \label{A Canvas ajánlás}
+	\addcontentsline{toc}{subsection}{a tervezet}
 
   A Canvas API egy közel tíz éves, kiforrott technológia~\footnote{A W3C
 első HTML5 szabvány-vázlata:\\ \footnotesize{
-\url{https://www.w3.org/TR/2008/WD-html5-20080122/\#the-2d}}}.
+\url{https://www.w3.org/TR/2008/WD-html5-20080122/\#the-2d}}}. A
+tervezet leír egy felbontásfüggő rajzolóvásznat, melyet jellemzően
+\emph{canvas}nek neveznek. A canvas definició szerint nem más mint egy
+adott \emph{szélesség}gel és \emph{hosszúság}gal meghatározott terület,
+ahova különböző alakzatokat, képeket, szövegeket és egyéb nem dinamikus
+grafikai elemeket rakhatunk fel. Az elemeket a canvashoz tartozó
+\emph{context} gyűjti, és bizonyos parancsok (pl. \emph{fill()},
+\emph{stroke()}) esetén az addig összegyűjtötteket kirajzolja a
+megadott sorrendben. Végül mindig egy \emph{kép} (\angol{image}) vagy
+még pontosabban egy \emph{bit-térkép} (\angol{bitmap}) készül.
+
 Számunkra azonban az a legfontosabb, hogy ezen az ajánláson belül
 használt Path API rész egy még régebbi, elterjedt alakzat szerkesztő
 eljáráson alapul. Ezt az eljárást hívjuk alakzat építésnek (\angol{path
