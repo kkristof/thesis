@@ -61,8 +61,8 @@
 
 %%% Saját parancsok
 % Az angol kifejezések kiemelése
-\newcommand{\angol}[1]{\textsl{#1}}
-\newcommand{\angolfn}[1]{\footnotesize{\angol{#1}}}
+\newcommand{\inenglish}[1]{\textsl{#1}}
+\newcommand{\inenglishfn}[1]{\footnotesize{\inenglish{#1}}}
 
 %\hyphenation{sza-bály el-kü-lö-ní-tett}
 
@@ -237,17 +237,17 @@ grafika, path, canvas-2D-context, OpenGL-ES 2.0
 legtöbbjének van grafikus kijelzője, és ezen eszközök mindegyike
 használ valamilyen megjelenítő~\footnote{A számítógépes grafikában egy
 modell megjelenítését végző folyamatot \emph{renderelés}nek
-(\angolfn{rendering}), a renderelést végző programrészt pedig
-\emph{motor}nak (\angolfn{engine}) hívnak} (a továbbiakban renderelő)
-függvénykönyvtárat. Ilyen például a Skia, a Cairo, az OpenGL, és ilyen
-tervezését tűzte ki célul a Gepard Graphics is. A \emph{Gepard} a
-tervek szerint egy \emph{C++11}-es nyelven írt, és több (OpenGL,
-\mbox{OpenGL-ES 2.0\cite{Munshi:2008:OEP:1481069}} és Vulkan) grafikus
-renderelő motort támogató függvénykönyvtár lesz.
+(\inenglishfn{rendering}), a renderelést végző programrészt pedig
+\emph{motor}nak (\inenglishfn{engine}) hívnak} (a továbbiakban
+renderelő) függvénykönyvtárat. Ilyen például a Skia, a Cairo, az
+OpenGL, és ilyen tervezését tűzte ki célul a Gepard Graphics is. A
+\emph{Gepard} a tervek szerint egy \emph{C++11}-es nyelven írt, és több
+(OpenGL, \mbox{OpenGL-ES 2.0\cite{Munshi:2008:OEP:1481069}} és Vulkan)
+grafikus renderelő motort támogató függvénykönyvtár lesz.
 
   A tervek szerint idővel a Gepard több interfésszel is rendelkezik.
 Így alkot majd egy komplex grafikus alkalmazásprogramozási felületet
-(\angol{Application Programming Interface}, a továbbiakban API). Az
+(\inenglish{Application Programming Interface}, a továbbiakban API). Az
 elsőnek választott ilyen ismertebb interfész amit támogatni kíván az a
 \emph{W3C} által készített \emph{Canvas 2D
 Context}~\cite{Cabanier:14:HCC} nevű ajánlás.
@@ -261,7 +261,7 @@ bonyolultabbak leírását biztosító eszköz. A Háttér (\ref{Háttér}.)
 fejezetben részletesebben kifejtjük a path-t építő eszköz lehetőségeit
 és szabályait. Itt most csak annyiban kell kitérjünk rá, hogy
 alapvetően két nagyobb részből áll ez is. A \emph{körvonalból}
-(\angol{stroke}) és a \emph{kitöltésből} (\angol{fill}).
+(\inenglish{stroke}) és a \emph{kitöltésből} (\inenglish{fill}).
 
   Jelen dolgozat a kitöltést megvalósító részt kívánja bemutatni.
 Azt, hogy milyen szabályoknak kellett megfelelni, milyen lehetőségeket
@@ -292,7 +292,7 @@ helyesen elvégezhessük. Össze kellett kapcsolni a választott GLES2
 szabta megkötést (legfeljebb háromszögeket rajzol) a Canvas
 elvárásaival (tetszőleges számú körcikk, szakasz és Bézier-görbe
 alkotta -- akár önmetsző -- alakzatok mérethelyes megjelenítése). Ehhez
-több lépésbeli megközelítést (\angol{approximation}) alkalmaztunk.
+több lépésbeli megközelítést (\inenglish{approximation}) alkalmaztunk.
 Ezekről a lépésekről is érdemes beszélni.
 
     \section[A Canvas ajánlás]{A W3C Canvas 2D Context ajánlása}
@@ -309,13 +309,13 @@ ahova különböző alakzatokat, képeket, szövegeket és egyéb nem dinamikus
 grafikai elemeket rakhatunk fel. Az elemeket a canvashoz tartozó
 \emph{context} gyűjti, és bizonyos parancsok (pl. \emph{fill()},
 \emph{stroke()}) esetén az addig összegyűjtötteket kirajzolja a
-megadott sorrendben. Végül mindig egy \emph{kép} (\angol{image}) vagy
-még pontosabban egy \emph{bit-térkép} (\angol{bitmap}) készül.
+megadott sorrendben. Végül mindig egy \emph{kép} (\inenglish{image})
+vagy még pontosabban egy \emph{bit-térkép} (\inenglish{bitmap}) készül.
 
 Számunkra azonban az a legfontosabb, hogy ezen az ajánláson belül
 használt Path API rész egy még régebbi, elterjedt alakzat szerkesztő
-eljáráson alapul. Ezt az eljárást hívjuk alakzat építésnek (\angol{path
-building}).
+eljáráson alapul. Ezt az eljárást hívjuk alakzat építésnek
+(\inenglish{path building}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
