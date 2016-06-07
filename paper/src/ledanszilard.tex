@@ -52,6 +52,9 @@
 % Forráskódhoz
 \usepackage{listings}
 
+% Képmellé íráshoz
+\usepackage{wrapfig}
+
 %Tételszerű környezetek definiálhatók, ezek most fejezetenként együtt számozódnak, pl.
 \newtheorem{tét}{Tétel}[chapter]
 \newtheorem{defi}[tét]{Definíció}
@@ -295,7 +298,7 @@ ajánlásról, a GLES2 szabvány nyújtotta lehetőségekről, azokról a
 matematikai módszerekről, amelyek biztosítják számunkra, hogy
 tetszőlegesen bonyolult -- szerencsénkre zárt -- alakzatok kitöltését
 helyesen elvégezhessük. Össze kellett kapcsolni a választott GLES2
-szabta megkötést (legfeljebb háromszögeket rajzol) a Canvas
+szabta megkötést (legfeljebb háromszögeket rajzol) a Canvas Path API
 elvárásaival (tetszőleges számú körcikk, szakasz és Bézier-görbe
 alkotta -- akár önmetsző -- alakzatok mérethelyes megjelenítése). Ehhez
 több lépésbeli megközelítést (\inenglish{approximation}) alkalmaztunk.
@@ -303,94 +306,125 @@ Ezekről a lépésekről is érdemes beszélni.
 
     \section[A Canvas ajánlás]{A W3C Canvas 2D Context ajánlása}
     \label{A Canvas ajánlás}
-    \addcontentsline{toc}{subsection}{a tervezet}
+%    \addcontentsline{toc}{subsection}{az ajánlás}
 
   A Canvas API egy közel tíz éves, kiforrott technológia~\footnote{A W3C
 első HTML5 szabvány-vázlata:\\ \footnotesize{
-\url{https://www.w3.org/TR/2008/WD-html5-20080122/\#the-2d}}}. A
-tervezet leír egy felbontásfüggő rajzolóvásznat, melyet jellemzően
+\url{https://www.w3.org/TR/2008/WD-html5-20080122/\#the-2d}}}. Az
+ajánlás leír egy felbontásfüggő rajzolóvásznat, melyet jellemzően
 \emph{canvas}nek neveznek. A canvas definició szerint nem más mint egy
 adott \emph{szélesség}gel és \emph{hosszúság}gal meghatározott terület,
 ahova különböző alakzatokat, képeket, szövegeket és egyéb nem dinamikus
-grafikai elemeket rakhatunk fel. Az elemeket a canvashoz tartozó
+grafikai elemeket rakhatunk fel. Az elemeket a canvashez tartozó
 \emph{context} gyűjti, és bizonyos parancsok (pl. \emph{fill()},
 \emph{stroke()}) esetén az addig összegyűjtötteket kirajzolja a
 megadott sorrendben. Végül mindig egy \emph{kép} (\inenglish{image})
 vagy még pontosabban egy \emph{bit-térkép} (\inenglish{bitmap}) készül.
 
-  Az ajánláson belül használt Path API rész amúgy egy régebbi, elterjedt
-alakzatszerkesztő eljáráson alapul. Ezt az eljárást hívjuk alakzat
-építésnek (\inenglish{path building}). A path építés
-különböző elemek segítségével történik. Két fő részre
-bontható. Az első rész tulajdonképpen nem is az építésre, mint
-inkább a definiálásra és a rajzolásra vonatkozik. Míg a második
-rész tartalmazza a path építéséhet szükséges parancsokat,
-elemeket. Ezek a parancsok vagy elemek a következők:
-    \begin{enumerate}[I.]
-      \item Rajzoló parancsok:
-        \begin{enumerate}
-          \item \emph{beginPath}: egy állapot egyszerre csak egy
-          path-t definiálhat. Ezzel a paranccsal kezdhetünk egy új
-          path építeni. Fontos azonban, hogy nem kötelező ezzel
-          kezdeni, de az előtte épített részt viszont eldobja.
-          Parancsforma:\newline
-            \texttt{beginPath();}
-          \item \emph{fill}: az addig felépített path-t
-          \emph{kitöltéssel}, azaz a path által határolt belső részt
-          a vászonra kirajzolja. Parancsforma:\newline
-            \texttt{fill();}
-          \item \emph{stroke}: az addig felépített path-t
-          \emph{körvonallal}, azaz a path mentén a megfelelő
-          vastagsággal a vászonra kirajzolja. Parancsforma:\newline
-            \texttt{stroke();}
-        \end{enumerate}
-      \item Építő elemek, parancsok:
-        \begin{enumerate}
-          \item \emph{closePath}: egy megkezdett alakzatot bezár, azaz
-          a legutolsó \emph{moveTo} elem koordinátáihoz húz egy
-          egyenest egy \emph{lineTo} eleme segítségével. Definíció
-          szerint minden alakzat zárt, ezért ha még le nem zárt
-          alakzatot próbálunk meg rajzolni, vagy egy \emph{moveTo}
-          elemmel máshova ugranánk, akkor előtte ilyen parancs
-          hívódik, hogy az bezáruljon.
-          Parancsforma:\newline
-            \texttt{closePath();}
-          \item \emph{moveTo}: ha rajzoláskor egy képzeletbeli toll
-          útjának tekintenénk az elemeket, akkor ez az elem a toll
-          felemelése és adott pontba lehelyezése lenne. Innen kezdődik
-          egy (zárt) alakzat rajzolása. Parancsforma:\newline
-            \texttt{moveTo(x, y);}
-          \item \emph{lineTo}: az előző pontból húz egy egyenest az
-          argumentumban megadott koordinátába. Parancsforma:\newline
-            \texttt{lineTo(x, y);}
-          \item \emph{quadraticCurveTo}: az előző pontból az
-          argumentumban megadott kontrollpont és végpont szerint húz
-          egy másodrendű Bézier-görbét. Parancsforma:\newline
-            \texttt{quadraticCurveTo(cpx, cpy, x, y);}
-          \item \emph{bezierCurveTo}: az előző pontból az
-          argumentumban megadott kontrollpontok és végpont szerint húz
-          egy harmadrendű Bézier-görbét. Parancsforma:\newline
-            \texttt{bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);}
-          \item \emph{arcTo}: az előző pontból, akár egy
-          \emph{lineTo} elem közbeékelésével a két kontrollpontnak
-          és a sugárnak megfelelően egy körívet definiál úgy,
-          hogy az a második pontban végződjék. Parancsforma:\newline
-            \texttt{arcTo(x1, y1, x2, y2, radius);}
-          \item \emph{rect}: egy külön zárt részalakzatot,
-          méghozzá egy téglalapot definiál az argumentumoknak
-          megfelelően. Ha nem volt bezárva az előző alakzat, akkor
-          bezárja, illetve a téglalap kezdőpontjához állítja a
-          végpontot (azaz innen folytathatjuk egy új részalakzat
-          építését). Parancsforma:\newline
-            \texttt{rect(x, y, w, h);}
-          \item \emph{arc}: az argumentumoknak megfelelően egy
-          körívet húz. Ha nem volt előző pont, akkor a
-          középpontot tekinti annak, és a kezdő szög által
-          definiált pontba egy \emph{lineTo} elem iktat.
-          Parancsforma:\newline
-            \texttt{arc(x, y, radius, startAngle, endAngle, counterclockwise = false);}
-        \end{enumerate}
+  Az ajánláson belül definiált Path API rész amúgy egy régebbi,
+elterjedt alakzatszerkesztő eljáráson alapul. Ezt az eljárást hívjuk
+alakzat építésnek (\inenglish{path building}). A path építés különböző
+elemek segítségével történik. Két fő részre bontható. Az első rész
+tulajdonképpen nem is az építésre, mint inkább a definiálásra és a
+rajzolásra vonatkozik. Míg a második rész tartalmazza a path építéséhet
+szükséges parancsokat, elemeket. Ezek a parancsok vagy elemek a
+következők:
+
+\begin{enumerate}[I.]
+  \item Rajzoló parancsok:
+    \begin{enumerate}
+      \item \emph{beginPath}: egy állapot egyszerre csak egy
+      \emph{path}t definiálhat. Ezzel a paranccsal kezdhetünk egy új
+      patht építeni. Fontos azonban, hogy nem kötelező ezzel
+      kezdeni, de az előtte épített részt viszont eldobja.
+      Parancsforma:\newline
+        \texttt{beginPath();}
+      \item \emph{fill}: az addig felépített path-t
+      \emph{kitöltéssel}, azaz a path által határolt belső részt
+      a vászonra kirajzolja. Parancsforma:\newline
+        \texttt{fill();}
+      \item \emph{stroke}: az addig felépített path-t
+      \emph{körvonallal}, azaz a path mentén a megfelelő
+      vastagsággal a vászonra kirajzolja. Parancsforma:\newline
+        \texttt{stroke();}
     \end{enumerate}
+  \item Építő elemek, parancsok:
+    \begin{enumerate}
+      \item \emph{closePath}: egy megkezdett alakzatot bezár, azaz
+      a legutolsó \emph{moveTo} elem koordinátáihoz húz egy
+      egyenest egy \emph{lineTo} elem segítségével. Definíció
+      szerint minden alakzat zárt, ezért ha még le nem zárt
+      alakzatot próbálunk meg rajzolni, vagy egy \emph{moveTo}
+      elemmel máshova ugranánk, akkor előtte ilyen parancs
+      hívódik, hogy az bezáruljon.
+      Parancsforma:\newline
+        \texttt{closePath();}
+      \item \emph{moveTo}: ha rajzoláskor egy képzeletbeli toll
+      útjának tekintenénk az elemeket, akkor ez az elem a toll
+      felemelése és adott pontba lehelyezése lenne. Innen kezdődik
+      egy (zárt) alakzat rajzolása. Parancsforma:\newline
+        \texttt{moveTo(x, y);}
+      \item \emph{lineTo}: az előző pontból húz egy egyenest az
+      argumentumban megadott koordinátába. Parancsforma:\newline
+        \texttt{lineTo(x, y);}
+      \item \emph{quadraticCurveTo}: az előző pontból az
+      argumentumban megadott kontrollpont és végpont szerint húz
+      egy másodrendű Bézier-görbét. Parancsforma:\newline
+        \texttt{quadraticCurveTo(cpx, cpy, x, y);}
+      \item \emph{bezierCurveTo}: az előző pontból az
+      argumentumban megadott kontrollpontok és végpont szerint húz
+      egy harmadrendű Bézier-görbét. Parancsforma:\newline
+        \texttt{bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);}
+      \item \emph{arcTo}: az előző pontból, akár egy
+      \emph{lineTo} elem közbeékelésével a két kontrollpontnak
+      és a sugárnak megfelelően egy körívet definiál úgy,
+      hogy az a második pontban végződjék. Parancsforma:\newline
+        \texttt{arcTo(x1, y1, x2, y2, radius);}
+      \item \emph{rect}: egy külön zárt részalakzatot,
+      méghozzá egy téglalapot definiál az argumentumoknak
+      megfelelően. Ha nem volt bezárva az előző alakzat, akkor
+      bezárja, illetve a téglalap kezdőpontjához állítja a
+      végpontot (azaz innen folytathatjuk egy új részalakzat
+      építését). Parancsforma:\newline
+        \texttt{rect(x, y, w, h);}
+      \item \emph{arc}: az argumentumoknak megfelelően egy
+      körívet húz. Ha nem volt előző pont, akkor a
+      középpontot tekinti annak, és a kezdő szög által
+      definiált pontba egy \emph{lineTo} elemet iktat.
+      Parancsforma:\newline
+        \texttt{arc(x, y, radius, startAngle, endAngle, counterclockwise = false);}
+    \end{enumerate}
+\end{enumerate}
+
+\Aref{dataflow-canvas-API-diagram}. ábrán láthatók az építő és rajzoló
+elemek. Illetve feltüntettük még az ajánlásban nem szereplő
+\emph{setFillColor} parancsot is. Ezzel a paranccsal adhatjuk meg a
+contexthez tartozó aktuális kitöltő színt. Ez a parancs nem része
+az ajánlásnak. Ott egy \emph{CSS DOM} elemmel állíthatjuk be ezt
+az értéket. Az általunk tervezett API azonban csak a Canvas 2D
+Contextre koncentrál, így a CSS elemeket nem kívánjuk támogatni.
+    \begin{wrapfigure}{l}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.6]{dataflow_canvas_api.eps}
+    \end{center}
+      \caption{\label{dataflow-canvas-API-diagram} A Gepard Context 2D API}
+    \end{wrapfigure}
+Illetve nincs az ábrán a \emph{beginPath} parancs. Végül is az
+jelen esetben nem több mint egy törlés és újrakezdés.
+
+  Az ábrán a kimenő nyilak a Gepard belső APIjának a hívásait
+jelölik. A \emph{rect} függvény esetében ez nem igényel többet
+mint egy megfelelő \emph{moveTo}, három \emph{lineTo} és egy
+\emph{closePath} hívást. Azaz visszavezetjük a Canvas 2D már
+megvalósított függvényeire.
+
+  Érdemes még néhány szót ejteni a \emph{stroke} hívásról is. Ez
+a rész a jelen dolgozatnak nem témája. Viszont a jövőben ennek e
+résznek a megvalósításakor -- legalábbis első körben -- úgy fogunk
+eljárni, hogy visszavezetjük a strokeot a fillre. Lévén, hogy adott
+szélességű stroke által lefedett területet felfoghatjuk úgy is mint egy
+kitöltéssel rajzolt bonyolultabb alakzatot. Így a strokenak is a fill
+lesz a lelke.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
