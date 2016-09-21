@@ -264,10 +264,10 @@ Context}~\cite{Cabanier:14:HCC} nevű ajánlás.
   A \emph{Canvas 2D Context} (a továbbiakban \emph{Canvas}) ajánlás
 2015-ös kiadása több elkülönített részből állítja össze az API-t. Ezen
 részek egyike az úgynevezett \emph{path}. Az említett 2015-ös ajánlás
-az 5., 8. és 11. fejezetekben részletezi a path-szal szembeni
+az 5., 8. és 11. fejezetekben részletezi a pathszal szembeni
 elvárásokat. A path maga a definiált grafikus alakzatokhoz képest
 bonyolultabbak leírását biztosító eszköz. A Háttér (\ref{Háttér}.)
-fejezetben részletesebben kifejtjük a path-t építő eszköz lehetőségeit
+fejezetben részletesebben kifejtjük a patht építő eszköz lehetőségeit
 és szabályait. Itt most csak annyiban kell kitérjünk rá, hogy
 alapvetően két nagyobb részből áll ez is. A \emph{körvonalból}
 (\inenglish{stroke}) és a \emph{kitöltésből} (\inenglish{fill}).
@@ -279,7 +279,7 @@ biztosított a választott OpenGL-ES 2.0 (a továbbiakban GLES2) szabvány,
 kitöltését biztosító része.
 
   Első körben nem volt cél a ,,leggyorsabban futó'' és ,,legkisebb
-méretű'' path-t kitöltő renderelő API elkészítése. Célunk egy út
+méretű'' patht kitöltő renderelő API elkészítése. Célunk egy út
 megtalálása és e mentén egy olyan eszköz megalkotása volt, amely képes
 a választott ajánlás (Canvas) elvárásait teljesíteni. Valamint ezáltal
 megismerhetünk bizonyos módszereket és technológiákat.
@@ -407,7 +407,8 @@ Contextre koncentrál, így a CSS elemeket nem kívánjuk támogatni.
     \begin{center}
       \includegraphics[scale=0.6]{dataflow_canvas_api.eps}
     \end{center}
-      \caption{\label{dataflow-canvas-API-diagram} A Gepard Context 2D API}
+      \caption{\label{dataflow-canvas-API-diagram}
+      A Gepard Context 2D API}
     \end{wrapfigure}
 Illetve nincs az ábrán a \emph{beginPath} parancs. Végül is az
 jelen esetben nem több mint egy törlés és újrakezdés.
@@ -426,12 +427,62 @@ szélességű stroke által lefedett területet felfoghatjuk úgy is mint egy
 kitöltéssel rajzolt bonyolultabb alakzatot. Így a strokenak is a fill
 lesz a lelke.
 
+    \section[GLES2 API]{Az OpenGL-ES 2.0 API}
+    \label{GLES2 API}
+
+  Az OpenGL-ES azaz az OpenGL Embeded System 2.0-ás verziója a
+Khronos Group által felügyelt grafikus meghajtó szabvány.
+
+    \section[Matematikai háttér]{Matematikai háttér}
+    \label{Matematikai háttér}
+
+  TODO: Matematikai háttér bevezetője
+
+    \subsection{Seprő-egyenesek}
+    \label{Seprő-egyenesek}
+
+  TODO: néhány szó az általános adott külső pontból húzott
+félegyenesek által
+
+    \subsection{Bézier-görbe és a de Casteljau felbontás}
+    \label{Bézier-görbe és a de Casteljau felbontás}
+
+    \subsection{Körívek közelítése Bézier-görbékkel}
+    \label{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%   Path API                                                       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \chapter{Path belső API}
+    \chapter{Belső Path API}
+
+  A \emph{Gepard} tervezésekor fontos szempont volt, hogy ne csak az
+GLES2 API-val működjön. Lehetőséget kell kínálni, hogy a jövőben
+több grafikus meghajtó közül lehessen választani. Mint például
+az OpenGL, a Vulkan, DirectX, esetleg egy referencia szoftveres
+képalkotó (\inenglish{renderer}). Ezért a Gepard publikált API-ján
+belül terveztünk egy belső API-t, amely már a választott
+rendererrel rajzol. A mi esetünkben ez a belső API-nak a Path
+része. Ez rajzol GLES2-t használva. Ebben a részben kell elvégezni
+azokat az átalakításokat, visszavezetéseket, amelyeket ugyanitt
+háromszögek formájában kirajzolunk.
+
+  Ebben a fejezetben fogjuk bemutatni ennek a belső Path API-nak a
+felépítését és működését. Elsőnek áttekintve a
+felépítését, majd részletezve az egyes megoldásokat és
+visszavezetéseket, közelítéseket.
+
+    \section[Felépítése]{Felépítése}
+    \label{Felépítése}
+
+    \begin{wrapfigure}{l}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.6]{dataflow_path_api.eps}
+    \end{center}
+      \caption{\label{dataflow-path-API-diagram} A belső Path API
+      részei és a szakaszokra bontás fázisai}
+    \end{wrapfigure}
+
 
     \begin{figure}[h]
     \centering
